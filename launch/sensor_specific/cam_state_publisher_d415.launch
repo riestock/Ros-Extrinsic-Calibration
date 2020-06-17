@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- device -->
+  <arg name="device_id"           default="1"/>
+  <arg name="device_name"         default="device_d415_$(arg device_id)"/>
+  <arg name="child_frame"	        default="$(arg device_name)_link"/>
+
+  <arg name="rate"                default="30"/>
+  <arg name="marker_id"           default="3"/>
+  <arg name="marker_frame"        default="marker_$(arg marker_id)"/>
+
+
+  <include file="$(find extrinsic_calibration)/launch/cam_state_publisher.launch">
+    <arg name="device_name" value="$(arg device_name)"/>
+    <arg name="child_frame" value="$(arg child_frame)"/>
+    <arg name="marker_frame" value="$(arg marker_frame)"/>
+    <arg name="rate" value="$(arg rate)"/>
+  </include>
+
+</launch>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="device_name"/>
+
+  <!-- param  -->
+  <arg name="debug" default="false"/>
+  <arg name="rate" default="1"/>
+  <arg name="child_frame" default="camera_link"/>
+  <arg name="target_frame"/>
+
+
+  <node name="extrinsic_calibration_tf_$(arg device_name)"
+        pkg="extrinsic_calibration"
+        type="extrinsic_calibration_tf"
+        output="screen" 
+        required="true">
+    <param name="device_name" value="$(arg device_name)"/>
+    <param name="rate" value="$(arg rate)"/>
+    <param name="debug" value="$(arg debug)"/>
+    <param name="child_frame" value="$(arg child_frame)"/>
+    <param name="target_frame" value="$(arg target_frame)"/>
+  </node>
+
+</launch>
+
+
+

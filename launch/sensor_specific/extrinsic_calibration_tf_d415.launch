@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- device -->
+  <arg name="device_id" default="1"/>
+  <arg name="device_name" default="device_d415_$(arg device_id)"/>
+
+  <!--  param -->
+  <arg name="debug" 							          default="true"/>
+  <arg name="target_frame" 					        default="marker_4"/>
+  <arg name="child_frame" 					        default="$(arg device_name)_link"/>
+
+
+  <include file="$(find extrinsic_calibration)/launch/extrinsic_calibration_tf.launch">
+    <arg name="device_name" value="$(arg device_name)"/>
+    <arg name="child_frame" value="$(arg child_frame)"/>
+    <arg name="target_frame" value="$(arg target_frame)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+</launch>

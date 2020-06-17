@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="device_name"/>
+  <arg name="child_frame"/>
+  <arg name="marker_frame"/>
+
+  <!-- param  -->
+  <arg name="rate" default="30"/>
+
+
+  <node name="cam_state_publisher" pkg="extrinsic_calibration" type="cam_state_publisher" output="screen">
+    <param name="device_name" value="$(arg device_name)"/>
+    <param name="child_frame" value="$(arg child_frame)"/>
+    <param name="marker_frame" value="$(arg marker_frame)"/>
+    <param name="pub_rate" value="$(arg rate)"/>
+  </node>
+
+</launch>
+
+
+
